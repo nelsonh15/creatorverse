@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { Box, Button, Toolbar, Typography } from '@mui/material';
 import { AspectRatio, CardOverflow, Card, CardContent, CardActions, Divider } from '@mui/joy';
-import Carousel from 'react-material-ui-carousel';
 
 function CreatorCard({ name, imageURL, twitter, youtube, instagram, description }) {
   const [isHovering, setIsHovering] = useState(false);
