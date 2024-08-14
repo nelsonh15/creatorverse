@@ -71,7 +71,7 @@ function AddCreator() {
       <Box sx={{ display: 'flex', justifyContent: 'center', padding: 3 }}>
         <Button variant="contained" onClick={handleSubmit} > Submit </Button>
       </Box>
-      <FormSubmitted open={submitted} setOpen={setSubmitted} />
+      <FormSubmitted open={submitted} setOpen={setSubmitted} message="Form Submitted!" />
     </Box>
   )
 }

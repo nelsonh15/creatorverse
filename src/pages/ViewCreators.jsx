@@ -37,7 +37,13 @@ function ViewCreator() {
   }
 
   const editCreatorHandler = async (creatorID) => {
-    console.log(creatorID)
+    const selectedCreator = creators.find(creator => creator.id === creatorID);
+
+    if (selectedCreator) {
+      navigate('/edit-creator', { state: { creator: selectedCreator } });
+    } else {
+      console.error('Creator not found');
+    }
   }
 
   const deleteCreatorHandler = async (creatorID) => {

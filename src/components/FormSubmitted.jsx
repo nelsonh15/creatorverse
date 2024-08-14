@@ -3,7 +3,7 @@ import { Snackbar, SnackbarContent } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 
-function FormSubmitted({ open, setOpen }) {
+function FormSubmitted({ open, setOpen, message }) {
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -30,7 +30,7 @@ function FormSubmitted({ open, setOpen }) {
       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
     >
       <SnackbarContent
-        message="Form Submitted"
+        message={message}
         action={action}
         sx={{ backgroundColor: 'white', color: 'black' }}
       />
