@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Box, TextField, Typography } from '@mui/material';
 import { supabase } from '../client';
+import NoCreatorsComp from "../components/NoCreatorsComp";
 import CreatorCard from '../components/CreatorCard';
 
 function ViewCreator() {
@@ -22,33 +23,67 @@ function ViewCreator() {
 		allCreators();
 	}, []);
 
+	const editCreatorHandler = async (creatorID) => {
+		console.log(creatorID)
+	}
+
+	const deleteCreatorHandler = async (creatorID) => {
+		const { error } = await supabase
+			.from('creators')
+			.delete()
+			.eq('id', creatorID)
+
+		if (error) {
+			console.error("Error deleting row!", error);
+		} else {
+			console.log('Row successfully deleted!');
+			setCreators(prevCreators => prevCreators.filter(creator => creator.id !== creatorID));
+		}
+	}
+
 	return (
 		<Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <Box component="main" sx={{ flexGrow: 1 }}>
-        <Box sx={{ display: 'flex', justifyContent: 'center', padding: '2vw' }}>
-          <Typography variant="h2" sx={{ fontSize: { xs: '7vw', sm: '6vw', md: '5vw', lg: '4vw', xl: '3vw' } }}>
-            Creators
-          </Typography>
-        </Box>
+			<Box component="main" sx={{ flexGrow: 1 }}>
+				<Box sx={{ display: 'flex', justifyContent: 'center', padding: '2vw' }}>
+					<Typography variant="h2" sx={{ fontSize: { xs: '7vw', sm: '6vw', md: '5vw', lg: '4vw', xl: '3vw' } }}>
+						Creators
+					</Typography>
+				</Box>
 
-        <Box sx={{
-          display: 'flex',
-          flexDirection: { xs: 'column', sm: 'column', md: 'row', lg: 'row', xl: 'row' },
-          alignItems: 'center',
-          gap: 5, // Adjust the gap as needed
-          flexWrap: 'wrap', // This makes the items wrap
-          justifyContent: 'center',
-          textAlign: 'center',
-          padding: 2
-        }}>
-					{creators.map((creator) => (
-						<CreatorCard key={creator.id} name={creator.creator_name} imageURL={creator.imageURL} twitter={creator.twitterURL} youtube={creator.youtubeURL} instagram={creator.instagramURL} description={creator.description} />
-					))}
-    
-        </Box>
+				<Box sx={{
+					display: 'flex',
+					flexDirection: { xs: 'column', sm: 'column', md: 'row', lg: 'row', xl: 'row' },
+					alignItems: 'center',
+					gap: 5,
+					flexWrap: 'wrap',
+					justifyContent: 'center',
+					textAlign: 'center',
+					padding: 2
+				}}>
+					{creators.length != 0 ? (
+						creators.map((creator) => (
+							<CreatorCard
+								creator={creator}
+								key={creator.id}
+								name={creator.creator_name}
+								imageURL={creator.imageURL}
+								twitter={creator.twitter_url}
+								youtube={creator.youtube_url}
+								instagram={creator.instagram_url}
+								description={creator.description}
+								editCreatorHandler={editCreatorHandler}
+								deleteCreatorHandler={deleteCreatorHandler}
 
-      </Box>
-    </Box>
+							/>
+						))
+					) : (
+						<NoCreatorsComp />
+					)
+					}
+
+				</Box>
+			</Box>
+		</Box>
 	)
 }
 

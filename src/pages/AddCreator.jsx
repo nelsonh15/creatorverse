@@ -56,16 +56,16 @@ function AddCreator() {
       </Box>
       <Box sx={{ paddingRight: 30, paddingLeft: 30 }}>
         <TextField required autoFocus margin="dense" id="name" label="Name" fullWidth variant="standard" value={name} onChange={(e) => setName(e.target.value)} />
-        <TextField autoFocus margin="dense" id="imageURL" label="Image URL" fullWidth variant="standard" value={imageURL} onChange={(e) => setImageURL(e.target.value)} />
-        <TextField autoFocus margin="dense" id="description" label="Description" fullWidth variant="standard" multiline rows={4} value={description} onChange={(e) => setDescription(e.target.value)} />
+        <TextField margin="dense" id="imageURL" label="Image URL" fullWidth variant="standard" value={imageURL} onChange={(e) => setImageURL(e.target.value)} />
+        <TextField margin="dense" id="description" label="Description" fullWidth variant="standard" multiline rows={4} value={description} onChange={(e) => setDescription(e.target.value)} />
         <Box sx={{ paddingTop: 10 }}>
           <Typography variant="h5" >
             Social Media Links
           </Typography>
         </Box>
-        <TextField autoFocus margin="dense" id="youtubeURL" label="Youtube URL" fullWidth variant="standard" value={youtubeURL} onChange={(e) => setYoutubeURL(e.target.value)} />
-        <TextField autoFocus margin="dense" id="twitterURL" label="Twitter URL" fullWidth variant="standard" value={twitterURL} onChange={(e) => setTwitterURL(e.target.value)} />
-        <TextField autoFocus margin="dense" id="instagramURL" label="Instagram URL" fullWidth variant="standard" value={instagramURL} onChange={(e) => setInstagramURL(e.target.value)} />
+        <TextField margin="dense" id="youtubeURL" label="Youtube URL" fullWidth variant="standard" value={youtubeURL} onChange={(e) => setYoutubeURL(e.target.value)} />
+        <TextField margin="dense" id="twitterURL" label="Twitter URL" fullWidth variant="standard" value={twitterURL} onChange={(e) => setTwitterURL(e.target.value)} />
+        <TextField margin="dense" id="instagramURL" label="Instagram URL" fullWidth variant="standard" value={instagramURL} onChange={(e) => setInstagramURL(e.target.value)} />
       </Box>
 
       <Box sx={{ display: 'flex', justifyContent: 'center', padding: 3 }}>
