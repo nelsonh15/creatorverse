@@ -10,7 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import InfoIcon from '@mui/icons-material/Info';
 
-function CreatorCard({ creator, name, imageURL, twitter, youtube, instagram, description, deleteCreatorHandler, editCreatorHandler }) {
+function CreatorCard({ creator, name, imageURL, twitter, youtube, instagram, description, showCreatorHandler, deleteCreatorHandler, editCreatorHandler }) {
   const [isHovering, setIsHovering] = useState(false);
   const handleMouseEnter = () => setIsHovering(true);
   const handleMouseLeave = () => setIsHovering(false);
@@ -65,7 +65,7 @@ function CreatorCard({ creator, name, imageURL, twitter, youtube, instagram, des
           padding: 0
         }}>
         <CardOverflow onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-          <AspectRatio ratio={ratio} sx={{}}>
+          <AspectRatio ratio={ratio}>
             <img
               src={imageURL}
               loading="lazy"
@@ -84,7 +84,7 @@ function CreatorCard({ creator, name, imageURL, twitter, youtube, instagram, des
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                padding: '1vw'
+                overflow: 'auto'
               }}>
                 <Typography variant="h6" sx={{ fontSize: { xs: '2vw', sm: '1.70vw', md: '1vw', lg: '0.95vw', xl: '0.9vw' } }}>
                   {description}
@@ -138,10 +138,11 @@ function CreatorCard({ creator, name, imageURL, twitter, youtube, instagram, des
 
             <Box sx={{ display: 'flex', flexDirection: 'row', gap: '0.5vw', paddingRight: 2, }}>
               <IconButton
-                aria-label="delete"
+                aria-label="show"
                 size="small"
                 onClick={(e) => {
                   e.stopPropagation();
+                  showCreatorHandler(creator.id)
                 }}
               >
                 <InfoIcon fontSize="small" style={{ color: "gray" }} />
