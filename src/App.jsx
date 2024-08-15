@@ -21,7 +21,9 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/add-creator" element={<AddCreator />} />
             <Route path="/edit-creator" element={<EditCreator />} />
+            <Route path="/edit-creator/:id" element={<EditCreator />} />
             <Route path="/show-creators" element={<ShowCreator />} />
+            <Route path="/show-creators/:id" element={<ShowCreator />} />
             <Route path="/view-creator" element={<ViewCreator />} />
           </Routes>
         </Box>

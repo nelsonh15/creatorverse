@@ -30,7 +30,7 @@ function ViewCreator() {
     const selectedCreator = creators.find(creator => creator.id === creatorID);
 
     if (selectedCreator) {
-      navigate('/show-creators', { state: { creator: selectedCreator } });
+      navigate(`/show-creators/${creatorID}`, { state: { creator: selectedCreator } });
     } else {
       console.error('Creator not found');
     }
@@ -40,7 +40,7 @@ function ViewCreator() {
     const selectedCreator = creators.find(creator => creator.id === creatorID);
 
     if (selectedCreator) {
-      navigate('/edit-creator', { state: { creator: selectedCreator } });
+      navigate(`/edit-creator/${creatorID}`, { state: { creator: selectedCreator } });
     } else {
       console.error('Creator not found');
     }
